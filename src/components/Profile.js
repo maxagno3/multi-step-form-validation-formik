@@ -18,18 +18,19 @@ function validationLogic(values) {
 
   if (!values.bio) {
     errors.bio = "Bio is required";
-  } else if (!/^([a-zA-Z0-9_-]){6,150}$/.test(values.bio)) {
-    errors.bio = "Must contain atleast 6 characters";
   }
+  // if (!/^([a-zA-Z0-9_-]){6,150}$/.test(values.bio)) {
+  //   errors.bio = "Must contain atleast 6 characters";
+  // }
 
   if (!values.phone) {
     errors.phone = "Phone number is required";
   } else if (values.phone.length !== 10) {
     errors.phone = "Phone number must contain 10 digits";
   }
-  if (!/\[0-9]/g.test(values.phone)) {
-    errors.phone = "Phone number must contain only numbers";
-  }
+  // if (!/\[0-9]/g.test(values.phone)) {
+  //   errors.phone = "Phone number must contain only numbers";
+  // }
 
   return errors;
 }
@@ -52,8 +53,9 @@ export class Profile extends Component {
           phone: "",
         }}
         validate={validationLogic}
-        onSubmit={(values, { setSubmiting }) => {
-          console.log(values, "values");
+        onSubmit={(values, { setSubmitting }) => {
+          this.props.setActive("personal");
+          setSubmitting(true);
         }}
       >
         {({

@@ -43,7 +43,8 @@ export class Personal extends Component {
         }}
         validate={validationLogic}
         onSubmit={(values, { setSubmiting }) => {
-          console.log(values, "values");
+          this.props.setActive("education");
+          setSubmiting(true);
         }}
       >
         {({
@@ -55,64 +56,69 @@ export class Personal extends Component {
           handleSubmit,
           isSubmitting,
         }) => (
-          <form onSubmit={handleSubmit}>
-            <label>
-              <input
-                type="text"
-                name="firstName"
-                value={values.firstName}
-                onChange={handleChange}
-                required
-              />
-              <div className="label-text">First name</div>
-              <small>{errors?.firstName}</small>
-            </label>
-            <label>
-              <input
-                type="text"
-                name="lastName"
-                value={values.lastName}
-                onChange={handleChange}
-                required
-              />
-              <div className="label-text">Last name</div>
-              <small>{errors?.lastName}</small>
-            </label>
-            <label>
-              <input
-                type="text"
-                name="address"
-                value={values.address}
-                onChange={handleChange}
-                required
-              />
-              <div className="label-text">Addres</div>
-              <small>{errors?.address}</small>
-            </label>
-            <label>
-              <input
-                type="text"
-                name="city"
-                value={values.city}
-                onChange={handleChange}
-                required
-              />
-              <div className="label-text">City</div>
-              <small>{errors?.city}</small>
-            </label>
-            <label>
-              <input
-                type="text"
-                name="zipcode"
-                value={values.zipcode}
-                onChange={handleChange}
-                required
-              />
-              <div className="label-text">Zip-Code</div>
-              <small>{errors?.zipcode}</small>
-            </label>
-            <button type="submit">Next</button>
-          </form>
+          <>
+            <form onSubmit={handleSubmit}>
+              <label>
+                <input
+                  type="text"
+                  name="firstName"
+                  value={values.firstName}
+                  onChange={handleChange}
+                  required
+                />
+                <div className="label-text">First name</div>
+                <small>{errors?.firstName}</small>
+              </label>
+              <label>
+                <input
+                  type="text"
+                  name="lastName"
+                  value={values.lastName}
+                  onChange={handleChange}
+                  required
+                />
+                <div className="label-text">Last name</div>
+                <small>{errors?.lastName}</small>
+              </label>
+              <label>
+                <input
+                  type="text"
+                  name="address"
+                  value={values.address}
+                  onChange={handleChange}
+                  required
+                />
+                <div className="label-text">Addres</div>
+                <small>{errors?.address}</small>
+              </label>
+              <label>
+                <input
+                  type="text"
+                  name="city"
+                  value={values.city}
+                  onChange={handleChange}
+                  required
+                />
+                <div className="label-text">City</div>
+                <small>{errors?.city}</small>
+              </label>
+              <label>
+                <input
+                  type="text"
+                  name="zipcode"
+                  value={values.zipcode}
+                  onChange={handleChange}
+                  required
+                />
+                <div className="label-text">Zip-Code</div>
+                <small>{errors?.zipcode}</small>
+              </label>
+              <button onClick={() => this.props.setActive("profile")}>
+                Back
+              </button>
+              <button type="submit">Next</button>
+            </form>
+          </>
         )}
       </Formik>
     );
